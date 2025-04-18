@@ -61,6 +61,9 @@ button[type="submit"] {
    margin: 0 auto;
   }
 
+  
+
+
 .photo-card {
   border: 1px solid #ddd;
   
@@ -109,6 +112,9 @@ button[type="submit"] {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+.hidden {
+  display: none;
 }
 
 .loader {

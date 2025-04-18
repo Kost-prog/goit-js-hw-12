@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('.load-more Not found');
     }
+    // Сховати кнопку "Load more" при старті
+    loadMoreBtn.classList.add('hidden');
 });
 
 let currentQuery = '';
