@@ -13,7 +13,7 @@ export async function getImagesByQuery(query, page = 1) {
         const { hits, totalHits } = response.data;
         return { hits, totalHits };
     } catch (error) {
-        console.error('Помилка при отриманні зображень:', error);
+        console.error('Error fetching images:', error);
         throw error;
     }
 }

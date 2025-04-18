@@ -11,17 +11,48 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 
+// export function createGallery(images) {
+//     const markup = images.map(({ webformatURL, largeImageURL, tags }) => `
+//         <a href="${largeImageURL}" class="gallery-item">
+//             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+//         </a>
+//     `).join('');
+
+//     galleryContainer.insertAdjacentHTML('beforeend', markup);
+//     lightbox.refresh();
+// }
+
 export function createGallery(images) {
-    const markup = images.map(({ webformatURL, largeImageURL, tags }) => `
-        <a href="${largeImageURL}" class="gallery-item">
-            <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-        </a>
-    `).join('');
+  const gallery = document.querySelector('.gallery');
 
-    galleryContainer.insertAdjacentHTML('beforeend', markup);
-    lightbox.refresh();
+  const markup = images.map(image => {
+    return `
+      <div class="gallery-item photo-card">
+        <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
+        <div class="info">
+          <div class="info-block">
+            <p class="label">Likes</p>
+            <p class="value">${image.likes}</p>
+          </div>
+          <div class="info-block">
+            <p class="label">Views</p>
+            <p class="value">${image.views}</p>
+          </div>
+          <div class="info-block">
+            <p class="label">Comments</p>
+            <p class="value">${image.comments}</p>
+          </div>
+          <div class="info-block">
+            <p class="label">Downloads</p>
+            <p class="value">${image.downloads}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  gallery.insertAdjacentHTML('beforeend', markup);
 }
-
 
 export function clearGallery() {
     galleryContainer.innerHTML = '';
