@@ -10,33 +10,33 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionDelay: 250,
 });
 export function createGallery(images) {
-    const markup = images.map(image => {
+  const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
     return `
-      <div class="gallery-item photo-card">
-        <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
+      <a href="${largeImageURL}" class="gallery-item photo-card">
+        <img src="${webformatURL}" alt="${tags}" loading="lazy" />
         <div class="info">
           <div class="info-block">
             <p class="label">Likes</p>
-            <p class="value">${image.likes}</p>
+            <p class="value">${likes}</p>
           </div>
           <div class="info-block">
             <p class="label">Views</p>
-            <p class="value">${image.views}</p>
+            <p class="value">${views}</p>
           </div>
           <div class="info-block">
             <p class="label">Comments</p>
-            <p class="value">${image.comments}</p>
+            <p class="value">${comments}</p>
           </div>
           <div class="info-block">
             <p class="label">Downloads</p>
-            <p class="value">${image.downloads}</p>
+            <p class="value">${downloads}</p>
           </div>
         </div>
-      </div>
+      </a>
     `;
   }).join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+  galleryContainer.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
 
