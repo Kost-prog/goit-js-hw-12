@@ -9,14 +9,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
 });
-
-
-
-
 export function createGallery(images) {
-  const gallery = document.querySelector('.gallery');
-
-  const markup = images.map(image => {
+    const markup = images.map(image => {
     return `
       <div class="gallery-item photo-card">
         <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
@@ -43,6 +37,7 @@ export function createGallery(images) {
   }).join('');
 
   gallery.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh();
 }
 
 export function clearGallery() {
